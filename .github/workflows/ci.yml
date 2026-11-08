@@ -1,0 +1,56 @@
+name: Colors Web App CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Lint HTML, CSS, and JavaScript
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Linting Tools
+        run: |
+          npm init -y
+          npm install --save-dev stylelint stylelint-config-standard eslint eslint-config-eslint eslint-plugin-html HTMLHint
+
+      - name: Run HTMLHint (HTML Linting)
+        run: npx htmlhint "**/*.html"
+
+      - name: Configure Stylelint
+        run: |
+          echo '{"extends": "stylelint-config-standard"}' > .stylelintrc.json
+
+      - name: Run Stylelint (CSS Linting)
+        run: npx stylelint "**/*.css"
+
+      - name: Configure ESLint
+        run: |
+          echo '[{
+            "plugins": {
+              "html": {}
+            },
+            "languageOptions": {
+              "ecmaVersion": "latest",
+              "sourceType": "module"
+            },
+            "rules": {
+              "no-unused-vars": "warn",
+              "no-console": "off"
+            }
+          }]' > eslint.config.js
+
+      - name: Run ESLint (JavaScript Linting)
+        run: npx eslint "**/*.js"
