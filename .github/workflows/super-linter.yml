@@ -8,9 +8,9 @@ name: Lint Code Base
 
 on:
   push:
-    branches: [ "main","HW4" ]
+    branches: [ "HW4" ]
   pull_request:
-    branches: [ "main","HW4" ]
+    branches: [ "HW4" ]
 jobs:
   run-lint:
     runs-on: ubuntu-latest
