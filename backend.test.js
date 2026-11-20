@@ -1,4 +1,4 @@
-const ENDPOINT_URL = 'http://localhost/LAMPAPI/SearchColors.php'; // Update with your actual path
+const ENDPOINT_URL = 'http://162.243.105.170:80/LAMPAPI/SearchColors.php'; // Update with your actual path
 
 describe('SearchColors PHP Endpoint', () => {
   test('returns matching colors when records exist', async () => {
