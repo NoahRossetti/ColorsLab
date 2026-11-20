@@ -1,0 +1,15 @@
+{
+"name": "lamp-api-tests",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.6.6",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  }
+}
